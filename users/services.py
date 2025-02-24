@@ -6,7 +6,6 @@ class UserService:
     def register_user(data):
         serializer = UserSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
-            # Lógica adicional aqui (ex: hash de senha)
             return serializer.save()
     
     @staticmethod

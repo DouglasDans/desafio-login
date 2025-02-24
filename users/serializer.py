@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import User
 import re
+from django.contrib.auth.hashers import make_password
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,7 +12,5 @@ class UserSerializer(serializers.ModelSerializer):
             'created_at': {'read_only': True}
         }
 
-    def validate_name(self, value):
-        if not re.match(r'^[A-Za-zÀ-ÖØ-öø-ÿ ]+$', value):
-            raise serializers.ValidationError("O nome deve conter apenas letras e espaços.")
-        return value
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
