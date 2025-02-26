@@ -10,19 +10,15 @@ type FormData = {
 
 export async function authenticateUser({ email, password }: FormData) {
   "use server";
-  console.log(email, password);
-  console.log("email, password");
 
   const res = await axios
-    .post("http://localhost:8000/api/login/", {
+    .post(`${process.env.BACKEND_URL}/api/login/`, {
       email,
       password,
     })
     .catch((err) => {
       return err.response;
     });
-
-  console.log(res.data);
 
   if (res.status !== 200) {
     return {

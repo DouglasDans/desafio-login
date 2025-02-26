@@ -13,7 +13,7 @@ export async function registerUser({ name, email, password }: FormData) {
   "use server";
 
   const res = await axios
-    .post("http://localhost:8000/api/register/", {
+    .post(`${process.env.BACKEND_URL}/api/register/`, {
       name,
       email,
       password,
