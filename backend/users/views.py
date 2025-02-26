@@ -32,13 +32,15 @@ class LoginView(APIView):
         
         if not user:
             return Response(
-                {"message": "E-mail inexistente"},
+                {"message": "E-mail inexistente",
+                 "itemError": "email"
+                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
             
         if not check_password(password, user.password):
             return Response(
-                {"message": "Senha Inválida"},
+                {"message": "Senha Inválida","itemError": "password"},
                 status=status.HTTP_400_BAD_REQUEST
             )
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ThemeRegistry from "@/theme/theme-registry";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" prefers-color-scheme="light">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <ThemeRegistry options={{ key: 'joy' }}>{children}</ThemeRegistry>
       </body>
     </html>
   );
