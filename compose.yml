@@ -1,15 +1,30 @@
+version: '3.8'
+
 services:
-  backend_app: 
+  backend:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
-  frontend_app:
+    networks:
+      - app_network
+    environment:
+      - FRONTEND_URL=http://frontend:3000
+
+  frontend:
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
     command: npm run dev
     ports:
       - "3000:3000"
+    networks:
+      - app_network
+    environment:
+      - BACKEND_URL=http://backend:8000
+
+networks:
+  app_network:
+    driver: bridge
