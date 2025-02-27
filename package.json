@@ -5,7 +5,9 @@
   "scripts": {
     "docker": "docker compose up",
     "frontend": "cd frontend && npm run dev",
-    "backend": "cd backend && python manage.py runserver"
+    "frontend:install": "cd frontend && npm ci",
+    "backend": "cd backend && python manage.py runserver",
+    "backend:install": "cd backend && pip install -r requirements.txt && python manage.py makemigrations && python manage.py migrate"
   },
   "author": "douglasdans",
   "license": "ISC"

@@ -28,9 +28,11 @@ Para rodar o projeto diretamente, execute os seguintes comandos em diferentes in
 
 ```sh
 # Iniciar o frontend
+npm run frontend:install
 npm run frontend
 
 # Iniciar o backend
+npm run backend:install
 npm run backend
 ```
 
