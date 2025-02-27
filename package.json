@@ -1,0 +1,12 @@
+{
+  "name": "desafio-login",
+  "version": "1.0.0",
+  "description": "desafio-login",
+  "scripts": {
+    "docker": "docker compose up",
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && python manage.py runserver"
+  },
+  "author": "douglasdans",
+  "license": "ISC"
+}
